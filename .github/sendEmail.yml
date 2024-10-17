@@ -1,5 +1,6 @@
 name: Send Email
 
+#this is to push the command to the email spam 
 on:
   push:
     branches:
@@ -8,18 +9,24 @@ on:
 jobs:
   sendEmail:
     runs-on: ubuntu-latest
+
+    #able to acess the files 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+#set up java
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'  # Use the appropriate Node.js version
 
+#ensuring the library is being acesssed 
+#setting up envirment for the assignment 
       - name: Install dependencies
         run: |
           npm install nodemailer
 
+#able to send the email
+#use sendemail for the spamming 
       - name: Send Email
         run: node sendEmail.js
